@@ -5,5 +5,5 @@ package com.bonnguyen.tax.test;
  */
 
 public interface BaseInteractor {
-    long calcTax();
+    long calcTax() throws IllegalArgumentException;
 }

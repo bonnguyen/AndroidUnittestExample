@@ -19,8 +19,10 @@ public class VanInteractorImpl extends Vehicle implements BaseInteractor {
     }
 
     @Override
-    public long calcTax() {
-        if (getWeight() < 3500) {
+    public long calcTax() throws IllegalArgumentException {
+        if (getWeight() < 0) {
+            throw new IllegalArgumentException("Weight of van should be greater than 0");
+        } else if (getWeight() < 3500) {
             return 165;
         } else {
             return 190;

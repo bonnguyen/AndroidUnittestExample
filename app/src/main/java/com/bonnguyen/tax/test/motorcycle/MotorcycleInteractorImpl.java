@@ -19,7 +19,7 @@ public class MotorcycleInteractorImpl extends Vehicle implements BaseInteractor 
     }
 
     @Override
-    public long calcTax() {
+    public long calcTax() throws IllegalArgumentException {
         // TODO: Please implement this function
         return 0;
     }

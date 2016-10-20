@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class VanUnitTest {
     @Test
-    public void shouldReturn165IfAVanHasWeightLessThan3500() throws Exception {
+    public void shouldReturn165IfAVanHasWeightLessThan3500() {
         long expected = 165;
 
         VanInteractorImpl data = new VanInteractorImpl();
@@ -25,7 +25,7 @@ public class VanUnitTest {
     }
 
     @Test
-    public void shouldReturn190IfAVanHasWeightGreaterThan3500() throws Exception {
+    public void shouldReturn190IfAVanHasWeightGreaterThan3500() {
         long expected = 190;
 
         VanInteractorImpl data = new VanInteractorImpl();
@@ -36,5 +36,16 @@ public class VanUnitTest {
 
         long actual = data.calcTax();
         assertEquals(expected, actual);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldReturnExceptionIfAVanHasWeightIsNegativeNumber() {
+        VanInteractorImpl data = new VanInteractorImpl();
+        data.setManufactory("Toyota");
+        data.setModel("Avensis");
+        data.setRegistered(2001);
+        data.setWeight(-1);
+
+        data.calcTax();
     }
 }

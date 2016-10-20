@@ -28,24 +28,30 @@ public class CarInteractorImpl extends Vehicle implements BaseInteractor {
     }
 
     @Override
-    public long calcTax() {
-        if (getRegistered() < 2002) {
+    public long calcTax() throws IllegalArgumentException {
+        if (getRegistered() < 0) {
+            throw new IllegalArgumentException("Registered of car should be greater than 0");
+        } else if (getRegistered() < 2002) {
             return this.calcInvoiceForCarWhenRegisteredLessThan2002();
         } else {
             return this.calcInvoiceForCarWhenRegisteredGreaterAndEqual2002();
         }
     }
 
-    private long calcInvoiceForCarWhenRegisteredLessThan2002() {
-        if (getEngine() <= 1550) {
+    private long calcInvoiceForCarWhenRegisteredLessThan2002() throws IllegalArgumentException {
+        if (getEngine() < 0) {
+            throw new IllegalArgumentException("Engine of car should be greater than 0");
+        } else if (getEngine() <= 1550) {
             return 110;
         } else {
             return 165;
         }
     }
 
-    private long calcInvoiceForCarWhenRegisteredGreaterAndEqual2002() {
-        if (getEmission() <= 100) {
+    private long calcInvoiceForCarWhenRegisteredGreaterAndEqual2002() throws IllegalArgumentException {
+        if (getEmission() < 0) {
+            throw new IllegalArgumentException("Emission of car should be greater than 0");
+        } else if (getEmission() <= 100) {
             return 65;
         } else if (getEmission() > 100 && getEmission() <= 120) {
             return 75;
