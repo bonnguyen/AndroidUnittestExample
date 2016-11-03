@@ -1,4 +1,34 @@
 apply plugin: 'com.android.application'
+// Add to the bottom of the file
+apply plugin: 'com.google.gms.google-services'
+// Allows you to run spoon with almost no effort under new Android build system.
+apply plugin: 'spoon'
+// Gradle plugin that generates Jacoco reports from a Gradle Project
+apply plugin: 'com.vanniktech.android.junit.jacoco'
+
+// This section is optional
+spoon {
+    // for debug output
+    debug = true
+
+    // To run a single test class
+    className = 'com.bonnguyen.tax.test.van.VanInstrumentedTest'
+
+    // To run a single method in TestCase
+    methodName = 'testCalculatorTax'
+
+    // To execute the tests device by device */
+    sequential = true
+
+    // To grant permissions to Android M >= devices */
+    grantAllPermissions = true
+}
+
+junitJacoco {
+    jacocoVersion = '0.7.2.201409121644' // type String
+    ignoreProjects = [] // type String array
+    excludes // type String List
+}
 
 android {
     compileSdkVersion 24
@@ -21,9 +51,14 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    // Cloud testing
+    androidTestCompile(name: 'cloudtestingscreenshotter_lib', ext: 'aar')
+    // Espresso testing
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    // Spoon testing
+    androidTestCompile 'com.squareup.spoon:spoon-client:1.7.0'
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:design:24.2.1'
     compile 'com.intuit.sdp:sdp-android:1.0.2'

@@ -22,6 +22,9 @@ public class VanFragment extends BaseFragment implements VanView {
         setRootView(view);
 
         mPresenter = new VanPresenterImpl(this);
+        edtValue.setHint("Enter weight");
+        btnCalcTax.setHint("Calc Tax Van");
+        tvResult.setHint("Tax result van");
         return view;
     }
 }
