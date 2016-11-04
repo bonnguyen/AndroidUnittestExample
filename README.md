@@ -120,7 +120,7 @@ Then display result
 
 Bugs, Suggestions, Ideas
 ========================
-Any ideas/bugs/etc, as well as pull requests, are welcome in the [issues section](https://github.com/bonnguyen/UberSeekBar/issues).
+Any ideas/bugs/etc, as well as pull requests, are welcome in the [issues section](https://github.com/bonnguyen/AndroidUnittestExample/issues).
 
 DEVELOP BY
 ===================================
